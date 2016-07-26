@@ -26,7 +26,7 @@ public class CheckableLayout extends FrameLayout implements Checkable{
      * @param context
      */
     public CheckableLayout(Context context) {
-        super(context);
+        this(context,null);
     }
 
     /***
@@ -35,7 +35,7 @@ public class CheckableLayout extends FrameLayout implements Checkable{
      * @param attrs
      */
     public CheckableLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs,-1);
     }
 
     /**
@@ -45,7 +45,7 @@ public class CheckableLayout extends FrameLayout implements Checkable{
      * @param defStyleAttr
      */
     public CheckableLayout(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+        this(context, attrs, defStyleAttr,-1);
     }
 
     /**
@@ -57,6 +57,7 @@ public class CheckableLayout extends FrameLayout implements Checkable{
      */
     public CheckableLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        init(context,attrs,defStyleAttr,defStyleRes);
     }
 
     /***
@@ -68,6 +69,7 @@ public class CheckableLayout extends FrameLayout implements Checkable{
      */
     private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes){
 
+        //defStyleAttr = defStyleAttr == -1 ? R.attr.checkboxId : defStyleAttr;
         /****
          *
          *before 5.0 TypedArray array = context.obtainStyledAttributes(attrs,null);
@@ -80,7 +82,7 @@ public class CheckableLayout extends FrameLayout implements Checkable{
             throw new IllegalArgumentException("CheckableView's layout must need");
         }
 
-        View layoutView = LayoutInflater.from(context).inflate(layout,null);
+        View layoutView = LayoutInflater.from(context).inflate(layout,this);
 
         if (layoutView == null){
             throw new NullPointerException("LayoutView is null");
