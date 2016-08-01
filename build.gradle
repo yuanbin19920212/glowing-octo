@@ -17,3 +17,13 @@ allprojects {
         jcenter()
     }
 }
+
+task hello{
+    ext.property = "sdfsdd"
+}
+
+task show <<{
+    println hello.property
+}
+
+defaultTasks 'show'

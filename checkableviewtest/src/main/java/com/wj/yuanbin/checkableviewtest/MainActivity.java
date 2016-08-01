@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.Checkable;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -64,8 +65,8 @@ public class MainActivity extends Activity {
             TextView textView = viewHolder.getView(R.id.txt);
             textView.setText(getItem(position).txt);
             Item item = getItem(position);
-            Checkable checkable = viewHolder.getView(R.id.checkbox);
-            item.isChecked = checkable.isChecked();
+            CheckBox checkBox = viewHolder.getView(R.id.checkbox);
+            item.isChecked = checkBox.isChecked();
             return convertView;
         }
     }
